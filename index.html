@@ -24,6 +24,14 @@
             align-items: center;
         }
 
+        div div.active {
+            display: flex;
+        }
+
+        div div.nonactive {
+            display: none;
+        }
+
     </style>
 </head>
 
@@ -37,29 +45,61 @@
 
 
     <div class="mb-4 container">
-        <div id="img1" class="mb-3 container-item "style="display: none;">
+        <div id="1" class="mb-3 container-item active">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBC7mjvM5ScpKdw_anvVZ7ptcF7gEjF8NWV4p2pZdubQ&s" class="img-fluid">
         </div>
-        <div id="img2" class="mb-3 container-item" style="display: flex;">
+        <div id="2" class="mb-3 container-item nonactive">
             <img src="https://img.freepik.com/free-photo/fresh-yellow-daisy-single-flower-close-up-beauty-generated-by-ai_188544-15543.jpg?size=626&ext=jpg&ga=GA1.1.2116175301.1715212800&semt=ais" class="img-fluid">
         </div>
-        <div id="img3" class="mb-3 container-item" style="display: none;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBC7mjvM5ScpKdw_anvVZ7ptcF7gEjF8NWV4p2pZdubQ&s" class="img-fluid">
+        <div id="3" class="mb-3 container-item nonactive">
+            <img src="https://i.pinimg.com/236x/5b/6e/ca/5b6eca63605bea0eeb48db43f77fa0ce.jpg" class="img-fluid">
         </div>
-        <div id="img4" class="mb-3 container-item" style="display: none;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBC7mjvM5ScpKdw_anvVZ7ptcF7gEjF8NWV4p2pZdubQ&s" class="img-fluid">
+        <div id="4" class="mb-3 container-item nonactive">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXWqpMF-urHBNpDJBZB7b-SR5vgdKmMl3ygNmS_MrlzA&s" class="img-fluid">
         </div>
 
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary">Left</button>
-            <button type="button" class="btn btn-primary">Right</button>
-          </div>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button id="previousBtn" type="button" class="btn btn-primary">Left</button>
+        <button id="nextBtn" type="button" class="btn btn-primary">Right</button>
     </div>
     
     <script>
-        document.addEventListener('load', function (e) {
-            // body
+        const first = document.querySelector('.container').firstElementChild;
+        const last = document.querySelector('.container').lastElementChild;
+
+        nextBtn.addEventListener('click', function (e) {
+            const active = document.querySelector('.active');
+            const next = active.nextElementSibling; 
+            if (active.id === last.id) {
+                active.classList.remove('active');
+                active.classList.add('nonactive');
+                first.classList.remove('nonactive');
+                first.classList.add('active');
+            } else {
+                active.classList.remove('active');
+                active.classList.add('nonactive');
+                next.classList.remove('nonactive');
+                next.classList.add('active');
+            }
         });
+
+        previousBtn.addEventListener('click', function (e) {
+            const active = document.querySelector('.active');
+            const previous = active.previousElementSibling; 
+            if (active.id === first.id) {
+                active.classList.remove('active');
+                active.classList.add('nonactive');
+                last.classList.remove('nonactive');
+                last.classList.add('active');
+            } else {
+                active.classList.remove('active');
+                active.classList.add('nonactive');
+                previous.classList.remove('nonactive');
+                previous.classList.add('active');
+            }
+        });
+        
     </script>
 </body>
 </html>
