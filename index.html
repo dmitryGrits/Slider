@@ -60,8 +60,15 @@
 
     </div>
     <div class="btn-group" role="group" aria-label="Basic example">
-        <button id="previousBtn" type="button" class="btn btn-primary">Left</button>
-        <button id="nextBtn" type="button" class="btn btn-primary">Right</button>
+        <button id="previousBtn" type="button" class="btn btn-primary">Назад</button>
+        <button id="nextBtn" type="button" class="btn btn-primary">Вперёд</button>
+    </div>
+
+    <div id="indicators" class="btn-group" role="group" aria-label="Basic example">
+        <button id="1" type="button" class="btn btn-secondary">1 Картинка</button>
+        <button id="2" type="button" class="btn btn-secondary">2 Картинка</button>
+        <button id="3" type="button" class="btn btn-secondary">3 Картинка</button>
+        <button id="4" type="button" class="btn btn-secondary">4 Картинка</button>
     </div>
     
     <script>
@@ -99,6 +106,17 @@
                 previous.classList.add('active');
             }
         });
+
+        indicators.addEventListener('click', function (e) {
+            const itemId = e.target.closest('button').id;
+            const active = document.querySelector('.active');
+            const selected = document.getElementById(`${itemId}`);
+            active.classList.remove('active');
+            active.classList.add('nonactive');
+            selected.classList.remove('nonactive');
+            selected.classList.add('active');
+        });
+
         
     </script>
 </body>
